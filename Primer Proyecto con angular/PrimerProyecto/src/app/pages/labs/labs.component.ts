@@ -9,12 +9,19 @@ import { CommonModule } from '@angular/common'; // Importa CommonModule
   styleUrls: ['./labs.component.css']  
 })  
 export class LabsComponent {  
-  bienvenida = 'Hola';  
-  tasks: string[] = [  
+  bienvenida = 'Hola'; 
+  // Este es una lista sin signal 
+  /*tasks: string[] = [  
     'Instalar Angular',  
     'Crear proyecto',  
-    'Crear componentes'  
-  ];
+    'Crear componentes'
+  ];*/
+  //Esta es con signal 
+  tasks= signal([  
+    'Instalar Angular',  
+    'Crear proyecto',  
+    'Crear componentes'
+  ]);
   Nombre = signal('Andres');
   Edad = 39;
   disabled=true;
