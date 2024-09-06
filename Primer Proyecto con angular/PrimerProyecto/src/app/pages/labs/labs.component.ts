@@ -26,4 +26,10 @@ export class LabsComponent {
     disabled:true,
     avatar:'https://via.placeholder.com/150'
   }
+  clickHandler() {
+    alert('hola')
+  }
+  ChangeHandler(event: Event) {
+    console.log(event);
+  }
 }
