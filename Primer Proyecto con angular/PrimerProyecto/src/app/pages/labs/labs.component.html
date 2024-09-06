@@ -20,3 +20,7 @@
   <button (dblclick)="clickHandler()">double me</button>
   <p>(change)</p>  
     <input type="number" [value]="person.Edad" (change)="ChangeHandler($event)">
+  <p>(keydown)</p>  
+  <input type="text" [value]="person.Nombre" (keydown)="keydownHandler($event)">
+  <p>(keydown)</p>  
+  <input type="text" [value]="person.Nombre" (keydown.shift.t)="clickHandler()">
