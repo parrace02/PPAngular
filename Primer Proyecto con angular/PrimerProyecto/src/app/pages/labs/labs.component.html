@@ -4,12 +4,13 @@
   <li *ngFor="let task of tasks">  
     {{ task }}  
   </li>  
-</ul>
-<hr />
-<h2>{{  'Hola'.repeat(4) }}</h2>
-<p>La suma de 3 + 3 es: {{3+3}}</p>
-<p>Hola soy {{Nombre}} y tengo {{ Edad }} años </p>
-<hr />
-<img [src]="img" alt="">
-<input type="text" [value]="Nombre">
-<button disabled = "true">Click me</button>
+</ul>  
+<hr />  
+<h2>{{ 'Hola'.repeat(4) }}</h2>  
+<p>La suma de 3 + 3 es: {{ 3 + 3 }}</p>  
+<p>Hola soy {{ Nombre }} y tengo {{ Edad }} años </p>  
+<hr />  
+<img [src]="person.avatar" alt="">  
+<input type="number" [value]="person.Edad">  
+<button disabled="true">Click me</button>
+<p> person: {{person.Nombre}}</p>

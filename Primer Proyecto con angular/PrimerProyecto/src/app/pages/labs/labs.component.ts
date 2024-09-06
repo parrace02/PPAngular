@@ -18,5 +18,12 @@ export class LabsComponent {
   Nombre = 'Andres';
   Edad = 39;
   disabled=true;
-  img = '246076832_4816627708348583_9102039506862301512_n.jpg';
+  img = 'https://via.placeholder.com/150';
+
+  person = {
+    Nombre:'Andres',
+    Edad:39,
+    disabled:true,
+    avatar:'https://via.placeholder.com/150'
+  }
 }
