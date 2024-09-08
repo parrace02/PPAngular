@@ -25,7 +25,8 @@
   <p>(keydown)</p>  
   <input type="text" [value]="person.Nombre" (keydown.shift.t)="clickHandler()">
   <hr />
-  <ul>  
+  <ul> 
+    <p>Total de elementos de la lista {{ tasks().length}}</p> 
     <li *ngFor="let task of tasks(); index as i">  
       {{ i+1 }}  {{ task }}  
     </li>  

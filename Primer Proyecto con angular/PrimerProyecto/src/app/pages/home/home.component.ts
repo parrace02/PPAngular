@@ -1,12 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';  
+import { CommonModule } from '@angular/common'; // Importa CommonModule   
 
-@Component({
-  selector: 'app-home',
+@Component({  
+  selector: 'app-home',  
   standalone: true,
-  imports: [],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
-})
-export class HomeComponent {
-
+  imports: [CommonModule], // Asegúrate de agregar CommonModule aquí   
+  templateUrl: './home.component.html', // Asegúrate de que este archivo existe  
+  styleUrls: ['./home.component.css']    // Asegúrate de que este archivo existe  
+})  
+export class HomeComponent {  
+  // Define un Signal que contendrá las tareas  
+  tasks = signal(['Instalar Angular', 'Crear proyecto', 'Crear componentes', 'Crear servicio']);  
 }

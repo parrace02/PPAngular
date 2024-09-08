@@ -20,7 +20,8 @@ export class LabsComponent {
   tasks= signal([  
     'Instalar Angular',  
     'Crear proyecto',  
-    'Crear componentes'
+    'Crear componentes',
+    'Crear servicio'
   ]);
   Nombre = signal('Andres');
   Edad = 39;
