@@ -11,19 +11,19 @@
   <p>La suma de 3 + 3 es: {{ 3 + 3 }}</p>  
   <p>Hola soy {{ Nombre() }} y tengo {{ Edad }} años </p>  
   <hr />  
-  <img [src]="person.avatar" alt="">  
-  <input type="number" [value]="person.Edad">  
+  <img [src]="person().avatar" alt="">  
+  <input type="number" [value]="person().Edad">  
   <button disabled="true">Click me</button>
-  <p> person: {{person.Nombre}}</p>
+  <p> person: {{person().Nombre}}</p>
   <hr />
   <button (click)="clickHandler()">click me</button>
   <button (dblclick)="clickHandler()">double me</button>
   <p>(change)</p>  
-    <input type="number" [value]="person.Edad" (change)="ChangeHandler($event)">
+    <input type="number" [value]="person().Edad" (change)="ChangeHandler($event)">
   <p>(keydown)</p>  
-  <input type="text" [value]="person.Nombre" (keydown)="keydownHandler($event)">
+  <input type="text" [value]="person().Nombre" (keydown)="keydownHandler($event)">
   <p>(keydown)</p>  
-  <input type="text" [value]="person.Nombre" (keydown.shift.t)="clickHandler()">
+  <input type="text" [value]="person().Nombre" (keydown.shift.t)="clickHandler()">
   <hr />
   <ul> 
     <p>Total de elementos de la lista {{ tasks().length}}</p> 
@@ -32,6 +32,19 @@
     </li>  
   </ul>  
   <H1>SIGNALS</H1>
-  <input type="text" [value]="Nombre()" (change)="ChangeHandler($event)">
+  <input type="text" [value]="person().Nombre" (change)="ChangeHandler($event)">
   <p>Nombre: {{Nombre()}} </p>
+  <hr />
+  <p>Aprender  gnif</p>
+  
+  <div *ngIf="Nombre()==='Pedro' ">   
+     El nombre si es Pedro 
+  </div>
+<input type="number" [value]="person().Edad" (change)="ChangeEdad($event)">
+ <div *ngIf="person().Nombre ==='Andres' && person().Edad === 39; else miBloque">   
+  Si soy Andres y tengo 39 años
 </div>
+<ng-template #miBloque>
+  No soy pedro y no tengo 39 años
+</ng-template>
+ </div>

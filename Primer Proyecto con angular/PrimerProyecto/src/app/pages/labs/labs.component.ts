@@ -28,12 +28,12 @@ export class LabsComponent {
   disabled=true;
   img = 'https://via.placeholder.com/150';
 
-  person = {
+  person = signal({
     Nombre:'Andres',
     Edad:39,
     disabled:true,
     avatar:'https://via.placeholder.com/150'
-  }
+  });
   clickHandler() {
     alert('hola')
   }
@@ -47,5 +47,15 @@ export class LabsComponent {
   keydownHandler(event: KeyboardEvent){
     const input = event.target as HTMLInputElement;
     console.log(input.value);
+  }
+  ChangeEdad(event: Event) {
+    const input = event.target as HTMLInputElement;
+    const newValue = input.value;
+    this.person.update(prevState => {
+      return {
+        ...prevState,
+        Edad: parseInt(newValue, 10) 
+      }
+    });
   }
 }
