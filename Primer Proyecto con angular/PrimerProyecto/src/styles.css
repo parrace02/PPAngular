@@ -1,35 +1,44 @@
-/* You can add global styles to this file, and also import other style files */
-html,
-body {
-  margin: 0;
-  padding: 0;
-}
+/* You can add global styles to this file, and also import other style files */  
+html,  
+body {  
+  margin: 0;  
+  padding: 0;  
+}  
 
-button {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  background: none;
-  font-size: 100%;
-  vertical-align: baseline;
-  font-family: inherit;
-  font-weight: inherit;
-  color: inherit;
-  -webkit-appearance: none;
-  appearance: none;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+button {  
+  margin: 0;  
+  padding: 0;  
+  border: 0;  
+  background: none;  
+  font-size: 100%;  
+  vertical-align: baseline;  
+  font-family: inherit;  
+  font-weight: inherit;  
+  color: inherit;  
+  -webkit-appearance: none;  
+  appearance: none;  
+  -webkit-font-smoothing: antialiased;  
+  -moz-osx-font-smoothing: grayscale;  
+}  
 
-body {
-  font-family: "Roboto", sans-serif;
-  background: #f5f5f5;
-  color: #111111;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-weight: 300;
-}
+body {  
+  font-family: "Roboto", sans-serif;  
+  background: #f5f5f5;  
+  color: #111111;  
+  -webkit-font-smoothing: antialiased;  
+  -moz-osx-font-smoothing: grayscale;  
+  font-weight: 300;  
+  padding: 20px; /* Espaciado alrededor del contenido */  
+}  
 
-:focus {
-  outline: 0;
+h1, h2, h3, p {  
+  margin-left: 20px; /* Espaciado izquierda para elementos específicos */  
+}  
+
+.container {  
+  padding: 20px; /* Espaciado interno del contenedor */  
+}  
+
+:focus {  
+  outline: 0;  
 }
