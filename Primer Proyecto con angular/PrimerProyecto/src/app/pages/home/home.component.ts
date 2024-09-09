@@ -36,7 +36,7 @@ export class HomeComponent {
     //este linea es para agregar un string pero no para un objeto.
     //this.tasks.update((tasks) => [...tasks, newTasks]);
   }
-  //Esto se utiliza para cambiar informacion de la lista cuando se tiene en un metodo 
+  //Este metodo se utiliza para cambiar informacion de la lista cuando se tiene en un metodo 
   addTask(title: string)
   {
     const newTask ={
@@ -49,5 +49,21 @@ export class HomeComponent {
   }
   DeleteTask(index: number) {
     this.tasks.update((tasks) => tasks.filter((task, posicion) => posicion !==index ));
+  }
+
+  // metodo para actualizar la tarea 
+  updatetask(index: number)
+  {
+    this.tasks.update((tasks)=> {
+      return tasks.map((task,posicion) => {
+        if (posicion === index) {
+          return {
+            ...task, // coloco todos los atributos del objeto
+            completado: !task.completado //cambia el estado boleano de completado
+          }
+        }
+        return task; // si no devolvemos igual como estado.
+      })
+    })
   }
 }
