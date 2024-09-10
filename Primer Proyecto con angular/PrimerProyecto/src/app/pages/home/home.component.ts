@@ -1,11 +1,13 @@
 import { Component, signal } from '@angular/core';  
 import { CommonModule } from '@angular/common'; // Importa CommonModule
 import {Task } from './../../models/task.model';
+import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';  // Importa formulario  
+
 
 @Component({  
   selector: 'app-home',  
   standalone: true,
-  imports: [CommonModule], // Asegúrate de agregar CommonModule aquí   
+  imports: [CommonModule, ReactiveFormsModule], // Asegúrate de agregar CommonModule aquí   
   templateUrl: './home.component.html', // Asegúrate de que este archivo existe  
   styleUrls: ['./home.component.css']    // Asegúrate de que este archivo existe  
 })  
@@ -28,11 +30,26 @@ export class HomeComponent {
     'Crear componentes', 
     'Crear servicio'*/
   ]); 
-  ChangeHandler(event: Event) {
-    const input = event.target as HTMLInputElement;
-    const newTask = input.value;
+
+   newTaskCtrol = new FormControl(' ', {
+   nonNullable:true,
+   validators: [
+      Validators.required,
+    ]
+    
+  });
+
+  ChangeHandler(/*event: Event*/) {
+    // se elimina eñ evento y el por que todo esto ya esta en el newControl
+    //const input = event.target as HTMLInputElement;
+    //const newTask = input.value;
+    if(this.newTaskCtrol.valid) {
+      const value= this.newTaskCtrol.value;
+      this.addTask(value);
+      this.newTaskCtrol.setValue('');
+    }
     //con esta linea creo el objeto 
-    this.addTask(newTask);
+    //this.addTask(newTask);
     //este linea es para agregar un string pero no para un objeto.
     //this.tasks.update((tasks) => [...tasks, newTasks]);
   }
