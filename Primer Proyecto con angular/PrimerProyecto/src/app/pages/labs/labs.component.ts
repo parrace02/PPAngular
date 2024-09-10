@@ -1,10 +1,11 @@
 import { Component, signal } from '@angular/core';  
-import { CommonModule } from '@angular/common'; // Importa CommonModule  
+import { CommonModule } from '@angular/common'; // Importa CommonModule 
+import { FormControl, ReactiveFormsModule } from '@angular/forms'; // Importa formulario  
 
 @Component({  
   selector: 'app-labs',  
   standalone: true,  
-  imports: [CommonModule], // Asegúrate de agregar CommonModule aquí  
+  imports: [CommonModule, ReactiveFormsModule], // Asegúrate de agregar CommonModule aquí  
   templateUrl: './labs.component.html',  
   styleUrls: ['./labs.component.css']  
 })  
@@ -34,6 +35,18 @@ export class LabsComponent {
     disabled:true,
     avatar:'https://via.placeholder.com/150'
   });
+
+  // vamos a crear un formulario reactivo 
+colorCtrl=new FormControl();
+
+// crear un constructor 
+
+constructor() {
+  this.colorCtrl.valueChanges.subscribe(value=> {
+    console.log(value);
+  })
+}
+
   clickHandler() {
     alert('hola')
   }
