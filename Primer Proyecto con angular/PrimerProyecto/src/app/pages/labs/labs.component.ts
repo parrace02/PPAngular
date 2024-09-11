@@ -38,6 +38,7 @@ export class LabsComponent {
 
   // vamos a crear un formulario reactivo 
 colorCtrl=new FormControl();
+widthCtrl=new FormControl();
 
 // crear un constructor 
 

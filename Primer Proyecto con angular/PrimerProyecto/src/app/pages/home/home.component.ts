@@ -44,9 +44,11 @@ export class HomeComponent {
     //const input = event.target as HTMLInputElement;
     //const newTask = input.value;
     if(this.newTaskCtrol.valid) {
-      const value= this.newTaskCtrol.value;
-      this.addTask(value);
-      this.newTaskCtrol.setValue('');
+      const value= this.newTaskCtrol.value.trim(); // con el trim le quito espacios al final y al inicio 
+      if (value !== ''){
+        this.addTask(value);
+        this.newTaskCtrol.setValue('');
+      }    
     }
     //con esta linea creo el objeto 
     //this.addTask(newTask);
