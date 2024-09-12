@@ -85,4 +85,36 @@ export class HomeComponent {
       })
     })
   }
+    updatetaskEditing(index: number) {
+      this.tasks.update(prevState => {
+      return prevState.map((task,posicion) => {
+        if (posicion === index) {
+          return {
+            ...task, // coloco todos los atributos del objeto
+            editing: true //cambia el estado boleano 
+          }
+        }
+        return {
+          ...task,
+          editing: false
+        }; // si no las otras opciones de la lista quedan desactivadas el modo edición, solo una a la vez
+      })
+    });
+  }
+  updatetaskText(index: number, event: Event) {
+    const input= event.target as HTMLInputElement;
+    this.tasks.update(prevState => {
+    return prevState.map((task,posicion) => {
+      if (posicion === index) {
+        return {
+          ...task, // coloco todos los atributos del objeto
+          title:input.value,
+          editing: false
+        }
+      }
+      return task;
+      
+    })
+  });
+}   
 }
