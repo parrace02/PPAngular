@@ -6,3 +6,13 @@
     display:  block;
     background-color: blue;
 }
+.message-error {
+    background-color: rgb(255, 0, 0);
+    color:white;
+    opacity: 0;
+    transition: all linear .5s;
+}
+.message-error.show {
+    opacity: 1;
+
+}

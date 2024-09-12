@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';  
 import { CommonModule } from '@angular/common'; // Importa CommonModule 
-import { FormControl, ReactiveFormsModule } from '@angular/forms'; // Importa formulario  
+import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms'; // Importa formulario  
 
 @Component({  
   selector: 'app-labs',  
@@ -38,7 +38,16 @@ export class LabsComponent {
 
   // vamos a crear un formulario reactivo 
 colorCtrl=new FormControl();
-widthCtrl=new FormControl();
+widthCtrl=new FormControl(50, {
+  nonNullable:true,
+});
+nomeCtrl=new FormControl('Aqui escribir', {
+  nonNullable:true,
+  validators: [
+    Validators.required,
+    Validators.minLength(3)
+  ]
+});
 
 // crear un constructor 
 
