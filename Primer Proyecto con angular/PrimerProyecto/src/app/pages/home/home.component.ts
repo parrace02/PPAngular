@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';  
+import { Component, computed, signal } from '@angular/core';  
 import { CommonModule } from '@angular/common'; // Importa CommonModule
 import {Task } from './../../models/task.model';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';  // Importa formulario  
@@ -30,6 +30,18 @@ export class HomeComponent {
     'Crear componentes', 
     'Crear servicio'*/
   ]); 
+  filter= signal <'all' | 'Pending' | 'Completed'> ('all');
+  tasksByFilter= computed(()=>{
+    const filter= this.filter();
+    const tasks= this.tasks();
+    if (filter==='Pending') {
+      return tasks.filter(task => !task.completado);
+    }
+    if (filter==='Completed') {
+      return tasks.filter(task => task.completado);
+    }
+    return tasks;
+  })
 
    newTaskCtrol = new FormControl(' ', {
    nonNullable:true,
@@ -101,20 +113,30 @@ export class HomeComponent {
       })
     });
   }
-  updatetaskText(index: number, event: Event) {
-    const input= event.target as HTMLInputElement;
-    this.tasks.update(prevState => {
-    return prevState.map((task,posicion) => {
-      if (posicion === index) {
-        return {
-          ...task, // coloco todos los atributos del objeto
-          title:input.value,
-          editing: false
-        }
-      }
-      return task;
-      
-    })
-  });
-}   
+  // Método que actualiza el texto del task en una lista de tareas  
+updatetaskText(index: number, event: Event) {  
+  // Se obtiene el elemento de entrada (input) del evento  
+  const input = event.target as HTMLInputElement;  
+
+  // Se actualiza el estado de las tareas utilizando una función que toma el estado anterior (prevState)  
+  this.tasks.update(prevState => {  
+      // Se mapea el estado anterior para crear un nuevo estado  
+      return prevState.map((task, posicion) => {  
+          // Se verifica si la posición del task actual coincide con el índice del task a actualizar  
+          if (posicion === index) {  
+              // Si coinciden, se retorna un nuevo objeto task con todas las propiedades del task actual y se actualiza el título  
+              return {  
+                  ...task, // Se copia todos los atributos del objeto task actual  
+                  title: input.value, // Se actualiza el título con el valor del input  
+                  editing: false // Se establece el estado de edición como falso  
+              };  
+          }  
+          // Se retorna el task actual sin cambios si no es el que se está editando  
+          return task;  
+      });  
+  });  
+}
+changeFilter(filter: 'all' | 'Pending' | 'Completed') {  
+  this.filter.set(filter);
+}  
 }
