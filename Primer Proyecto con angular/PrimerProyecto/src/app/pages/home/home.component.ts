@@ -1,4 +1,4 @@
-import { Component, computed, signal } from '@angular/core';  
+import { Component, computed, effect, inject, Injector, signal } from '@angular/core';  
 import { CommonModule } from '@angular/common'; // Importa CommonModule
 import {Task } from './../../models/task.model';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';  // Importa formulario  
@@ -13,8 +13,9 @@ import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';  
 })  
 export class HomeComponent {  
   // Define un Signal que contendrá las tareas  
-  tasks = signal<Task[]>([
-    {
+  tasks = signal<Task[]>([ // quedo vacia
+    //Elimino los estados iniicales para dejarlos guardados en el localStorage
+    /*{
       id: Date.now(),
       title: 'Comienzo del proyecto',
       completado: true
@@ -30,19 +31,32 @@ export class HomeComponent {
     'Crear componentes', 
     'Crear servicio'*/
   ]); 
-  filter= signal <'all' | 'Pending' | 'Completed'> ('all');
-  tasksByFilter= computed(()=>{
-    const filter= this.filter();
-    const tasks= this.tasks();
-    if (filter==='Pending') {
-      return tasks.filter(task => !task.completado);
-    }
-    if (filter==='Completed') {
-      return tasks.filter(task => task.completado);
-    }
-    return tasks;
-  })
 
+// Se define una señal 'filter' que puede tener uno de los tres estados: 'all', 'Pending' o 'Completed'.  
+// 'all' es el valor predeterminado.  
+filter= signal <'all' | 'Pending' | 'Completed'> ('all');  
+
+// 'tasksByFilter' es una propiedad computada que recalcula su valor cada vez que cambia la señal 'filter' o la lista de 'tasks'.  
+tasksByFilter= computed(()=>{  
+  // Se obtiene el valor actual de la señal 'filter'.  
+  const filter= this.filter();  
+  
+  // Se obtiene la lista de tareas actual.  
+  const tasks= this.tasks();  
+  
+  // Si el filtro es 'Pending', se filtran las tareas para que solo incluyan las que no están completadas.  
+  if (filter==='Pending') {  
+    return tasks.filter(task => !task.completado);  
+  }  
+  
+  // Si el filtro es 'Completed', se filtran las tareas para que solo incluyan las que están completadas.  
+  if (filter==='Completed') {  
+    return tasks.filter(task => task.completado);  
+  }  
+  
+  // Si el filtro es 'all', se devuelve la lista completa de tareas.  
+  return tasks;  
+});
    newTaskCtrol = new FormControl(' ', {
    nonNullable:true,
    validators: [
@@ -50,6 +64,28 @@ export class HomeComponent {
     ]
     
   });
+
+  // se creo un injector 
+
+  inject=inject(Injector);
+
+    ngOnInit() {
+    const Storage = localStorage.getItem('tasks')
+    if(Storage) {
+      const tasks=JSON.parse(Storage);
+      this.tasks.set(tasks);
+    }
+    this,this.TrackTasks();    
+  }
+
+  TrackTasks() {
+    effect(() => {
+      const tasks= this.tasks();
+      console.log(tasks)
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+    }, {injector: this.inject});
+
+  }
 
   ChangeHandler(/*event: Event*/) {
     // se elimina eñ evento y el por que todo esto ya esta en el newControl
