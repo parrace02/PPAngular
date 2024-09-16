@@ -40,6 +40,18 @@
   <div *ngIf="Nombre()==='Pedro' ">   
      El nombre si es Pedro 
   </div>
+  @if (Nombre()==='Pedro') {
+    <div>
+      Soy pedro
+    </div>    
+  }
+  <h2>If con la nueva sintaxis</h2>
+  @if (person().Nombre ==='Andres' && person().Edad === 39) {
+    <div>Me llamo andres y tengo 39 años</div>
+  } @else {
+    <strong> No me llamo andres o no tengo 39 años</strong>
+  }
+
 <input type="number" [value]="person().Edad" (change)="ChangeEdad($event)">
  <div *ngIf="person().Nombre ==='Andres' && person().Edad === 39; else miBloque">   
   Si soy Andres y tengo 39 años
