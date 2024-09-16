@@ -85,5 +85,38 @@
 </p>
 <p>
   <input type="text">
-</p>   
+</p>
+<hr />
+<h2> Nuevo For</h2>
+for(task of tasks(); track task; let i=$index) {
+  <li>
+    {{i}} {{task}}
+  </li>
+} @empty {
+  <li> <strong> lista esta vaio</strong></li>
+}
+<h2> Nuevo Swith</h2>
+<div>[ngSwitch]="person().Nombre"></div>
+  <p *ngSwitchCase="'Andres'">yO SOY ANDRES</p>
+  <p *ngSwitchCase="'Carlos'">yO SOY CARLOS</p>
+  <p *ngSwitchCase="'Pedro'">yO SOY PEDRO</p>
+  <P *ngSwitchDefault>Yo no soy nadie</P>
+</div>
+<hr />
+<div>
+  @switch(person().Nombre) {
+    @case('Andres') {
+      <p>Yo soy Andres</p>
+    }
+    @case('Carlos') {
+      <p>Yo soy Carlos</p>
+    }
+    @case('pedro') {
+      <p>Yo soy Pedro</p>
+    }
+    @default {
+      <p>No soy Nadie</p>
+    }
+  }
+</div>
 </div>
