@@ -88,35 +88,36 @@
 </p>
 <hr />
 <h2> Nuevo For</h2>
-for(task of tasks(); track task; let i=$index) {
+@for(task of tasks(); track task; let i=$index) {
   <li>
-    {{i}} {{task}}
+    {{i+1}} {{task}}
   </li>
 } @empty {
   <li> <strong> lista esta vaio</strong></li>
 }
-<h2> Nuevo Swith</h2>
-<div>[ngSwitch]="person().Nombre"></div>
-  <p *ngSwitchCase="'Andres'">yO SOY ANDRES</p>
-  <p *ngSwitchCase="'Carlos'">yO SOY CARLOS</p>
-  <p *ngSwitchCase="'Pedro'">yO SOY PEDRO</p>
-  <P *ngSwitchDefault>Yo no soy nadie</P>
-</div>
 <hr />
+<h2> Nuevo For</h2> 
+<div [ngSwitch]="person().Nombre">  
+  <p *ngSwitchCase="'Andres'">yO SOY ANDRES</p>  
+  <p *ngSwitchCase="'Carlos'">yO SOY CARLOS</p>  
+  <p *ngSwitchCase="'Pedro'">yO SOY PEDRO</p>  
+  <p *ngSwitchDefault>Yo no soy nadie</p>  
+</div>
 <div>
   @switch(person().Nombre) {
     @case('Andres') {
-      <p>Yo soy Andres</p>
+      <p>Yo soy andres</p>
     }
     @case('Carlos') {
       <p>Yo soy Carlos</p>
     }
-    @case('pedro') {
+    @case('Pedro') {
       <p>Yo soy Pedro</p>
     }
     @default {
-      <p>No soy Nadie</p>
+      <p>Y soy nadie</p>
     }
   }
 </div>
 </div>
+
