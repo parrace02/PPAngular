@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-
+import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-producto',
   standalone: true,
@@ -8,5 +8,7 @@ import { Component } from '@angular/core';
   styleUrl: './producto.component.css'
 })
 export class ProductoComponent {
-  img='https://picsum.photos/640/640?r=' + Math.random();
-}
+  @Input({required:true}) img: string='';
+  @Input({required:true}) Precio: number= 0;
+  @Input({required:true}) Titulo: string='';
+} 
