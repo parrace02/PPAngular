@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './producto.component.css'
 })
 export class ProductoComponent {
-
+  img='https://picsum.photos/140/140?r=' + Math.random();
 }
